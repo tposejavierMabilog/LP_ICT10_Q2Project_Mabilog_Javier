@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Club Information</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7e9e9;
+        }
+
+        .navbar {
+            background: #000000;
+            color: goldenrod;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .navbar a {
+            color: goldenrod;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 32px;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        button {
+            background: #323532;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .club-info {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            min-height: 150px;
+            border-left: 5px solid goldenrod;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="logo"> DESIRE GRAND PRIX </div>
+        <div>
+            <a href="home.html">Home</a>
+            <a href="index.html">Grade Calculator</a>
+            <a href="clubs.html">Clubs</a>
+        </div>
+    </div>
+
+    <h2 class="title">School Club Information</h2>
+
+    <div class="container">
+
+        <label>Select a club:</label>
+        <select id="clubSelect">
+            <option value="robotics">Robotics Club</option>
+            <option value="science">Science Club</option>
+            <option value="art">Art Club</option>
+            <option value="music">Music Club</option>
+        </select>
+
+        <button onclick="showClubInfo()">Show Club Information</button>
+
+        <div class="club-info" id="clubInfoBox"></div>
+
+    </div>
+
+
+<script>
+    // All club data stored here
+    const clubData = {
+        robotics: {
+            name: "Robotics Club",
+            description: "Design, build, and program robots for competitions.",
+            time: "Every Tuesday 3:45–5:30 PM",
+            location: "Computer Lab",
+            adviser: "buggy D clown",
+            members: 18,
+            category: "Academic"
+        },
+
+        science: {
+            name: "Science Club",
+            description: "Explore experiments, research, and science fairs.",
+            time: "Every Thursday 4:00–5:00 PM",
+            location: "Science Lab",
+            adviser: "Mrs. solid snake",
+            members: 22,
+            category: "Academic"
+        },
+
+        art: {
+            name: "Art Club",
+            description: "Painting, sketching, crafts, and creative design projects.",
+            time: "Every Friday 3:30–5:00 PM",
+            location: "Art Room",
+            adviser: "mr. lebron",
+            members: 15,
+            category: "Creative"
+        },
+
+        music: {
+            name: "Music Club",
+            description: "Practice instruments, vocals, and prepare for performances.",
+            time: "Every Wednesday 4:00–5:30 PM",
+            location: "Music Room",
+            adviser: "mr. maunwi wowie",
+            members: 20,
+            category: "Creative"
+        }
+    };
+
+    function showClubInfo() {
+        const clubKey = document.getElementById("clubSelect").value;
+        const club = clubData[clubKey];
+
+        document.getElementById("clubInfoBox").innerHTML = `
+            <p><b>${club.name}</b></p>
+            <p>Description: ${club.description}</p>
+            <p>Meeting Time: ${club.time}</p>
+            <p>Location: ${club.location}</p>
+            <p>Adviser: ${club.adviser}</p>
+            <p>Number of Members: ${club.members}</p>
+            <p>Category: ${club.category}</p>
+        `;
+    }
+
+    // Auto-load first club
+    showClubInfo();
+</script>
+
+</body>
+</html>
